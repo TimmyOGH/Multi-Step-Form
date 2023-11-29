@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: []
-- Live Site URL: []
+- Solution URL: [https://github.com/TimmyOGH/Multi-Step-Form]
+- Live Site URL: [https://timmyogh.github.io/Multi-Step-Form]
 
 ### Built with
 
