@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <title>Frontend Mentor | Multi-step form</title>
+
+</head>
+
+<body>
+
+  <div id="container">
+    <div class="mobile_img_steps">
+      <img src="images/bg-sidebar-mobile.svg" alt="bg-sidebar-mobile">
+      <div class="steps_box_mobile">
+        <div class="step">
+          <span class="circle pinfo_cir_mb">1</span>
+        </div>
+        <div class="step">
+          <span class="circle plan_cir_mb">2</span>
+        </div>
+        <div class="step">
+          <span class="circle addons_cir_mb">3</span>
+        </div>
+        <div class="step">
+          <span class="circle summary_cir_mb">4</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="left_box">
+        <img src="images/bg-sidebar-desktop.svg" alt="bg-sidebar-desktop">
+        <div class="steps_box">
+          <div class="step">
+            <span class="circle pinfo_cir">1</span>
+            <p>STEP 1<br><span>YOUR INFO</span></p>
+          </div>
+          <div class="step">
+            <span class="circle plan_cir">2</span>
+            <p>STEP 2<br><span>SELECT PLAN</span></p>
+          </div>
+          <div class="step">
+            <span class="circle addons_cir">3</span>
+            <p>STEP 3<br><span>ADD-ONS</span></p>
+          </div>
+          <div class="step">
+            <span class="circle summary_cir">4</span>
+            <p>STEP 4<br><span>SUMMARY</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="right_box">
+        <!-- Personal Info -->
+        <div class="personal_info active">
+          <h3>Personal info</h3>
+          <p>Please provide your name, email address, and phone number.</p>
+          <form>
+            <label>Name</label>
+            <label class="error_message"><span id="nameErrM"></span></label>
+            <input type="text" name="name" id="name" placeholder="e.g. Stephen King" autocomplete="off">
+            <label>Email Address</label>
+            <label class="error_message"><span id="emailErrM"></span></label>
+            <input type="text" name="email" id="email" placeholder="e.g. stephenking@lorem.com" autocomplete="off">
+            <label>Phone Number</label>
+            <label class="error_message"><span id="phNoErrM"></span></label>
+            <input type="tel" name="phone" id="phone" placeholder="e.g. +1 234 567 890" autocomplete="off">
+            <input type="submit" name="nextStep" class="nextStep" value="Next Step"
+              onclick="validatePersonalInfo(event)">
+          </form>
+        </div>
+
+        <!-- Select Plan -->
+        <div class="select_plan">
+          <h3>Select your plan</h3>
+          <p>You have the option of monthly or yearly billing.</p>
+          <div class="three_plans">
+            <div class="plan_box arcade" onclick="arcade()">
+              <img src="images/icon-arcade.svg" alt="icon-arcade">
+              <div>
+                <h4>Arcade</h4>
+                <p class="arcadeMPrice arcadeYPrice">$9/mo</p>
+                <span class="monthsFree"></span>
+              </div>
+            </div>
+            <div class="plan_box advanced" onclick="advanced()">
+              <img src="images/icon-advanced.svg" alt="icon-advanced">
+              <div>
+                <h4>Advanced</h4>
+                <p class="advancedMPrice advancedYPrice">$12/mo</p>
+                <span class="monthsFree"></span>
+              </div>
+            </div>
+            <div class="plan_box pro" onclick="pro()">
+              <img src="images/icon-pro.svg" alt="icon-pro">
+              <div>
+                <h4>Pro</h4>
+                <p class="proMPrice proYPrice">$15/mo</p>
+                <span class="monthsFree"></span>
+              </div>
+            </div>
+          </div>
+          <div class="monthly_yearly">
+            <h5 id="monthly">Monthly</h5>
+            <div class="ball-switch monthly">
+              <span class="switch-body">
+                <span class="toggle"></span>
+              </span>
+            </div>
+            <h5 id="yearly">Yearly</h5>
+          </div>
+          <button class="goBack" onclick="goBacks()">Go Back</button>
+          <input type="submit" name="nextStep" class="nextStep" value="Next Step" onclick="selectPlan()">
+        </div>
+
+        <!-- Add Ons -->
+        <div class="add_ons">
+          <h3>Pick add-ons</h3>
+          <p>Add-ons help enhance your gaming experience.</p>
+          <div class="three_addons">
+            <div class="addon_box online_service">
+              <svg onclick="onlineService()" class="onlineServiceCbo active" xmlns="http://www.w3.org/2000/svg"
+                width="20" height="20" viewBox="0 0 12 9">
+                <path fill="none" stroke="hsl(0, 0%, 100%)" stroke-width="2" d="m1 4 3.433 3.433L10.866 1" />
+              </svg>
+              <div>
+                <h4>Online service</h4>
+                <p>Access to multiplayer games</p>
+              </div>
+              <span class="OnlineServicePrice">+$1/mo</span>
+            </div>
+            <div class="addon_box larger_storage">
+              <svg onclick="largerStorage()" class="checkbox largerStorageCbo" xmlns="http://www.w3.org/2000/svg"
+                width="20" height="20" viewBox="0 0 12 9">
+                <path fill="none" stroke="hsl(0, 0%, 100%)" stroke-width="2" d="m1 4 3.433 3.433L10.866 1" />
+              </svg>
+              <div>
+                <h4>Larger storage</h4>
+                <p>Extra 1TB of cloud save</p>
+              </div>
+              <span class="largerStoragePrice">+$2/mo</span>
+            </div>
+            <div class="addon_box customizable_profile">
+              <svg onclick="customizableProfile()" class="checkbox customizableProfileCbo"
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 12 9">
+                <path fill="none" stroke="hsl(0, 0%, 100%)" stroke-width="2" d="m1 4 3.433 3.433L10.866 1" />
+              </svg>
+              <div>
+                <h4>Customizable profile</h4>
+                <p>Custom theme on your profile</p>
+              </div>
+              <span class="customizableProfilePrice">+$2/mo</span>
+            </div>
+            <span id="AddOnsErrM">Please pick at least one add-on</span>
+          </div>
+          <button class="goBack" onclick="goBacks()">Go Back</button>
+          <input type="submit" name="nextStep" class="nextStep" value="Next Step" onclick="addOnsFunc()">
+        </div>
+
+        <!-- Summary -->
+        <div class="summary">
+          <h3>Finishing up</h3>
+          <p>Double-check everything looks OK before confirming.</p>
+          <div class="summary_box">
+            <div class="above_line">
+              <div>
+                <div class="title_box">
+                  <h4 id="planTitle">Arcade</h4>
+                  <span id="MorYTxt">(Monthly)</span>
+                </div>
+                <p onclick="changePlan()">Change</p>
+              </div>
+              <span id="planPrice">$9/mo</span>
+            </div>
+            <hr id="hori_row">
+            <div class="below_line"></div>
+          </div>
+          <div class="total_box">
+            <p>Total (per month)</p>
+            <span class="summary_total">+$9/mo</span>
+          </div>
+          <button class="goBack" onclick="goBacks()">Go Back</button>
+          <input type="submit" name="confirm" class="confirm" value="Confirm" onclick="confirmSub()">
+        </div>
+
+        <!-- Thank You -->
+        <div class="thankyou">
+          <div class="thankyou_box">
+            <div class="thankyou_content">
+              <img src="images/icon-thank-you.svg" alt="icon-thank-you">
+              <h3>Thank you!</h3>
+              <p>Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need
+                support, please feel free to email us at support@loremgaming.com.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="white_bg_mb"></div>
+
+    <!-- Credits -->
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="https://www.frontendmentor.io/profile/timodn">@timodn</a>.
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
