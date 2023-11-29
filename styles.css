@@ -501,7 +501,7 @@ body {
 @media screen and (max-width: 896px) {
     #container {
         display: block;
-        height: 105.75vh;
+        height: 110vh;
     }
 
     .mobile_img_steps {
